@@ -1,3 +1,5 @@
 a := 10;
 escreva a;
-exiba "as"
+exiba "as";
+escreva 10 / 2;
+escreva 10 ^ 2
