@@ -97,6 +97,31 @@ interface Linguagem {
 		}
 	}
 
+	class Escolha implements Comando {
+		private Id entrada;
+        private Map<Expressao, Comando> comandos;
+        private Comando saidaPadrao;
+
+		public Escolha(Id entrada, Map<Expressao, Comando> comandos, Comando saidaPadrao) {
+			this.entrada = entrada;
+			this.comandos = comandos;
+			this.saidaPadrao = saidaPadrao;
+		}
+		
+		@Override
+		public void execute() {
+			int valor = entrada.getValor();
+			for (Expressao exp : comandos.keySet()) {
+                if (exp.getValor() == valor) {
+                    comandos.get(exp).execute();
+                    return;
+                }
+			}
+			saidaPadrao.execute();
+		}
+		
+	}
+
 	Skip skip = new Skip();
 	class Skip implements Comando {
 		@Override

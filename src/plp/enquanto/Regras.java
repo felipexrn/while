@@ -2,6 +2,8 @@ package plp.enquanto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import plp.enquanto.Linguagem.*;
 import plp.enquanto.parser.EnquantoBaseListener;
@@ -60,6 +62,20 @@ public class Regras extends EnquantoBaseListener {
 		final Expressao expressao = valores.pegue(ctx.expressao());
 		final Comando comando = valores.pegue(ctx.comando());
 		valores.insira(ctx, new Repita(expressao, comando));
+	}
+
+	@Override
+	public void exitEscolha(EscolhaContext ctx) {
+		final Id id = new Id(ctx.ID().getText());
+		final Map<Expressao, Comando> escolhas = new HashMap<Expressao, Comando>();
+		for (int i = 0; i < ctx.expressao().size(); i++) {
+			escolhas.put(
+				(Expressao) valores.pegue(ctx.expressao(i)),
+				(Comando) valores.pegue(ctx.comando(i))
+			);
+		}
+		final Comando outro = (Comando) valores.pegue(ctx.comando(ctx.comando().size()-1));
+		valores.insira(ctx, new Escolha(id, escolhas, outro));
 	}
 
 	@Override
