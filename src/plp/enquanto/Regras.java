@@ -171,6 +171,7 @@ public class Regras extends EnquantoBaseListener {
 		final Bool exp = switch (op) {
 			case "="  -> new ExpIgual(esq, dir);
 			case "<>" -> new ExpDiferente(esq, dir);
+			case "<"  -> new ExpMenorQue(esq, dir);
 			case "<=" -> new ExpMenorIgual(esq, dir);
 			default   -> new ExpIgual(esq, esq);
 		};

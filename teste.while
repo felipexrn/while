@@ -12,4 +12,6 @@ senao exiba "falso";
 se (b = 1) ou (c = 1) entao exiba "verdadeiro"
 senao exiba "falso";
 se (b = 1) xou (c <> 1) entao exiba "verdadeiro"
+senao exiba "falso";
+se (b < 2) entao exiba "verdadeiro"
 senao exiba "falso"
