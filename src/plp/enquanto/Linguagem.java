@@ -269,6 +269,17 @@ interface Linguagem {
 		}
 	}
 
+	class ExpDiferente extends OpBin<Expressao> implements Bool {
+		ExpDiferente(Expressao esq, Expressao dir) {
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor() {
+			return esq.getValor() != dir.getValor();
+		}
+	}
+
 	class ExpMenorIgual extends OpBin<Expressao> implements Bool{
 		ExpMenorIgual(Expressao esq, Expressao dir) {
 			super(esq, dir);
