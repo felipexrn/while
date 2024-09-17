@@ -20,4 +20,6 @@ senao exiba "falso",
 se (c >= 0) entao exiba "verdadeiro"
 senao exiba "falso",
 para i de 1 ate 5 faca
-escreva i;
+escreva i,
+repita 10 vezes
+exiba "Funciona";

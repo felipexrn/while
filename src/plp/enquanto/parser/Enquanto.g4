@@ -12,6 +12,7 @@ comando: ID ':=' expressao                                       # atribuicao
        | 'escreva' expressao                                     # escreva
        | '{' seqComando '}'                                      # bloco
        | 'para' ID 'de' expressao 'ate' expressao 'faca' comando # para
+       | 'repita' expressao 'vezes' comando                      # repita
        ;
 
 expressao: INT                                           # inteiro
