@@ -1,8 +1,8 @@
 grammar Enquanto;
 
-programa : seqComando;     // sequência de comandos
+programa : seqComando ';' ;     // sequência de comandos
 
-seqComando: comando (';' comando)* ;
+seqComando: comando (',' comando)* ;
 
 comando: ID ':=' expressao                               # atribuicao
        | 'skip'                                          # skip

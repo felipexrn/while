@@ -1,21 +1,21 @@
-a := 10;
-escreva a;
-exiba "as";
-escreva 10 / 2;
-escreva 10 ^ 2;
-b := 1;
-c := 0;
-escreva b;
-escreva c;
+a := 10,
+escreva a,
+exiba "as",
+escreva 10 / 2,
+escreva 10 ^ 2,
+b := 1,
+c := 0,
+escreva b,
+escreva c,
 se (b = 1) e (c = 1) entao exiba "verdadeiro"
-senao exiba "falso";
+senao exiba "falso",
 se (b = 1) ou (c = 1) entao exiba "verdadeiro"
-senao exiba "falso";
+senao exiba "falso",
 se (b = 1) xou (c <> 1) entao exiba "verdadeiro"
-senao exiba "falso";
+senao exiba "falso",
 se (b < 2) entao exiba "verdadeiro"
-senao exiba "falso";
+senao exiba "falso",
 se (b > 5) entao exiba "verdadeiro"
-senao exiba "falso";
+senao exiba "falso",
 se (c >= 0) entao exiba "verdadeiro"
-senao exiba "falso"
+senao exiba "falso";
