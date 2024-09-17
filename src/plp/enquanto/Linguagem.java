@@ -301,4 +301,26 @@ interface Linguagem {
 			return esq.getValor() && dir.getValor();
 		}
 	}
+
+	class OuLogico extends OpBin<Bool> implements Bool{
+		OuLogico(Bool esq, Bool dir) {
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor() {
+			return esq.getValor() || dir.getValor();
+		}
+	}
+
+	class XouLogico extends OpBin<Bool> implements Bool{
+		XouLogico(Bool esq, Bool dir) {
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor() {
+			return esq.getValor() ^ dir.getValor();
+		}
+	}
 }

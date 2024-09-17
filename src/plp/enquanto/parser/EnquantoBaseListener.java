@@ -185,6 +185,18 @@ public class EnquantoBaseListener implements EnquantoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterXouLogico(EnquantoParser.XouLogicoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitXouLogico(EnquantoParser.XouLogicoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBool(EnquantoParser.BoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -240,6 +252,18 @@ public class EnquantoBaseListener implements EnquantoListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBoolPar(EnquantoParser.BoolParContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOuLogico(EnquantoParser.OuLogicoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOuLogico(EnquantoParser.OuLogicoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -86,6 +86,7 @@ bool :
    | expressao '<=' expressao   # opRel 
    | 'nao' bool                 # naoLogico 
    | bool 'e' bool              # eLogico 
+   | bool 'ou' bool             # ouLogico
    | '(' bool ')'               # boolPar ;
 ```
 
