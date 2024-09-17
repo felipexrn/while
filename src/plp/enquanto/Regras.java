@@ -173,6 +173,7 @@ public class Regras extends EnquantoBaseListener {
 			case "<>" -> new ExpDiferente(esq, dir);
 			case "<"  -> new ExpMenorQue(esq, dir);
 			case "<=" -> new ExpMenorIgual(esq, dir);
+			case ">"  -> new ExpMenorQue(esq, dir);
 			default   -> new ExpIgual(esq, esq);
 		};
 		valores.insira(ctx, exp);

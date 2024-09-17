@@ -302,6 +302,17 @@ interface Linguagem {
 		}
 	}
 
+	class ExpMaiorQue extends OpBin<Expressao> implements Bool{
+		ExpMaiorQue(Expressao esq, Expressao dir) {
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor() {
+			return esq.getValor() > dir.getValor();
+		}
+	}
+
 	class NaoLogico extends OpUnaria<Bool> implements Bool{
 		NaoLogico(Bool operando) {
 			super(operando);
