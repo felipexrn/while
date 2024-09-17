@@ -201,9 +201,16 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitExiba(ExibaContext ctx) {
-		final String t = ctx.TEXTO().getText();
-		final String texto = t.substring(1, t.length() - 1);
-		valores.insira(ctx, new Exiba(texto));
+		if (ctx.TEXTO() != null) {
+			// Caso seja um texto literal
+			final String t = ctx.TEXTO().getText();
+			final String texto = t.substring(1, t.length() - 1); // Remove aspas
+			valores.insira(ctx, new Exiba(texto));
+		} else if (ctx.expressao() != null) {
+			// Caso seja uma expressão
+			final Expressao exp = valores.pegue(ctx.expressao());
+			valores.insira(ctx, new Exiba(exp));
+		}
 	}
 
 	@Override

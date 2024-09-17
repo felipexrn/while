@@ -172,15 +172,21 @@ interface Linguagem {
 	}
 
 	class Exiba implements Comando {
-		private final String texto;
+		private final Object argumento;
 
-		public Exiba(String texto) {
-			this.texto = texto;
+		public Exiba(Object argumento) {
+			this.argumento = argumento;
 		}
-
+	
 		@Override
 		public void execute() {
-			System.out.println(texto);
+			if (argumento instanceof Expressao) {
+				Expressao exp = (Expressao) argumento;
+				System.out.println(exp.getValor());
+			} else if (argumento instanceof String) {
+				String texto = (String) argumento;
+				System.out.println(texto);
+			}
 		}
 	}
 
