@@ -37,3 +37,6 @@ senaose (c = 0) entao exiba "c igual a 0"
 senao exiba "c tem outro valor";
 exiba 1+1;
 exiba "1+1";
+a,b,c := 1,2,3;
+a,a,b := 1,2,3;
+a,b,c := 1,2;

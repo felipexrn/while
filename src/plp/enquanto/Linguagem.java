@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
 
 interface Linguagem {
 	Map<String, Integer> ambiente = new HashMap<>();
@@ -218,6 +220,42 @@ interface Linguagem {
 		}
 	}
 
+	class AtribuicaoParalela implements Comando {
+		private final List<String> ids;
+		private final List<Expressao> expressoes;
+
+		AtribuicaoParalela(List<String> ids, List<Expressao> expressoes) {
+			this.ids = ids;
+			this.expressoes = expressoes;
+		}
+
+		@Override
+		public void execute() {
+			if ((ids.size()) != (expressoes.size()))
+				throw new SyntaxException("Número de identificadores difere da quantidade de expressões.");
+
+			List<String> idsOrdenados = new ArrayList<String>(ids);
+			Collections.sort(idsOrdenados);
+			for (int i=1; i < idsOrdenados.size(); i++) {
+				if (idsOrdenados.get(i-1).equals(idsOrdenados.get(i)))
+					throw new SyntaxException("Identificador já existe no contexto.");
+			}
+			for (int i=1; i < ids.size(); i++) {
+				ambiente.put(ids.get(i), expressoes.get(i).getValor());
+			}
+		}
+	}
+
+	public class SyntaxException extends RuntimeException {
+		public SyntaxException(String message) {
+			super(message);
+		}
+	
+		public SyntaxException(String message, Throwable cause) {
+			super(message, cause);
+		}
+	}
+
 	/*
 	   Expressoes
 	 */
@@ -263,6 +301,10 @@ interface Linguagem {
 		@Override
 		public int getValor() {
 			return ambiente.getOrDefault(id, 0);
+		}
+
+		public String getId() {
+			return this.id;
 		}
 	}
 

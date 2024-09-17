@@ -5,10 +5,11 @@ programa : seqComando ';' ;     // sequência de comandos
 seqComando: comando ';'(comando ';')*;
 
 comando: ID ':=' expressao                                                                      # atribuicao
+       | ID (',' ID)*? ':=' expressao (',' expressao)*?                                         # atribuicaoParalela
        | 'skip'                                                                                 # skip
        | 'se' booleano 'entao' comando ('senaose' booleano 'entao' comando)*? 'senao' comando	# se
        | 'enquanto' booleano 'faca' comando                                                     # enquanto
-       | 'exiba' (TEXTO | expressao)                                                                          # exiba
+       | 'exiba' (TEXTO | expressao)                                                            # exiba
        | 'escreva' expressao                                                                    # escreva
        | '{' seqComando '}'                                                                     # bloco
        | 'para' ID 'de' expressao 'ate' expressao 'faca' comando                                # para
