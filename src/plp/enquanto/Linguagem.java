@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Iterator;
 
 interface Linguagem {
 	Map<String, Integer> ambiente = new HashMap<>();
@@ -35,22 +36,34 @@ interface Linguagem {
 	}
 
 	class Se implements Comando {
-		private final Bool condicao;
-		private final Comando entao;
-		private final Comando senao;
+		private Bool condicao;
+		private Comando entao;
+		private Comando senao;
+		private Map<Bool, Comando> senaoses;
 
-		public Se(Bool condicao, Comando entao, Comando senao) {
+		public Se(Bool condicao, Comando entao, Map<Bool, Comando> senaoses, Comando senao) {
 			this.condicao = condicao;
 			this.entao = entao;
 			this.senao = senao;
+			this.senaoses = senaoses;
 		}
 
 		@Override
 		public void execute() {
-			if (condicao.getValor())
+			if (condicao.getValor()) {
 				entao.execute();
-			else
+			} else {
+				Iterator<Bool> condicoes = senaoses.keySet().iterator();
+				while (condicoes.hasNext()) {
+					Bool senaose_condicao = condicoes.next();
+					if (senaose_condicao.getValor()) {
+						senaoses.get(senaose_condicao).execute();
+						return;
+					}
+				}
+				
 				senao.execute();
+			}
 		}
 	}
 

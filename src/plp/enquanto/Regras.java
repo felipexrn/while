@@ -42,10 +42,19 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitSe(SeContext ctx) {
-		final Bool condicao = valores.pegue(ctx.booleano());
-		final Comando entao = valores.pegue(ctx.comando(0));
-		final Comando senao = valores.pegue(ctx.comando(1));
-		valores.insira(ctx, new Se(condicao, entao, senao));
+		final Bool condicao = (Bool) valores.pegue(ctx.booleano(0));
+		final Map<Bool, Comando> senaoses = new HashMap<Bool, Comando>();
+		
+		for (int i = 1; i < ctx.booleano().size(); i++) {
+			senaoses.put(
+					(Bool) valores.pegue(ctx.booleano(i)),
+					(Comando) valores.pegue(ctx.comando(i))
+					);
+		}
+		
+		final Comando entao = (Comando) valores.pegue(ctx.comando(0));
+		final Comando senao = (Comando) valores.pegue(ctx.comando(ctx.comando().size()-1));
+		valores.insira(ctx, new Se(condicao, entao, senaoses, senao));
 	}
 
 	@Override

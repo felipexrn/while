@@ -24,10 +24,14 @@ escreva i,
 repita 10 vezes
 exiba "Funciona",
 d := 8,
-escolha d,
+escolha d
 caso 1 : exiba "um"
 caso 2 : exiba "dois"
 caso 3 : exiba "tres"
 caso 4 : exiba "quatro"
 caso 5 : exiba "cinco"
-outro exiba "maior que cinco";
+outro : exiba "maior que cinco",
+se (c > 0) entao exiba "c maior que zero"
+senaose (c > 5) entao exiba "c maior que 5"
+senaose (c = 0) entao exiba "c igual a 0"
+senao exiba "c tem outro valor";
