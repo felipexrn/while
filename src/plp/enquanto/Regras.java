@@ -127,7 +127,7 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitAtribuicao(AtribuicaoContext ctx) {
-		final String id = ctx.ID();
+		final String id = ctx.ID().getText();
 		final Expressao exp = valores.pegue(ctx.expressao());
 		valores.insira(ctx, new Atribuicao(id, exp));
 	}
