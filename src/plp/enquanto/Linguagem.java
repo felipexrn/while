@@ -54,6 +54,30 @@ interface Linguagem {
 		}
 	}
 
+	class Para implements Comando {
+		private final String id;
+		private final Expressao startExpr;
+        private final Expressao endExpr;
+        private final Comando comando;
+
+        public Para(String id, Expressao startExpr, Expressao endExpr, Comando comando) {
+			this.id = id;
+            this.startExpr = startExpr;
+            this.endExpr = endExpr;
+            this.comando = comando;
+        }
+
+		 @Override
+        public void execute() {
+            int start = startExpr.getValor();
+            int end = endExpr.getValor();
+			for (int i = start; i < end; i++) {
+				ambiente.put(id, i);
+				comando.execute();
+			}
+		}	
+	}
+
 	Skip skip = new Skip();
 	class Skip implements Comando {
 		@Override

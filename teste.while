@@ -18,4 +18,6 @@ senao exiba "falso",
 se (b > 5) entao exiba "verdadeiro"
 senao exiba "falso",
 se (c >= 0) entao exiba "verdadeiro"
-senao exiba "falso";
+senao exiba "falso",
+para i de 1 ate 5 faca
+escreva i;
