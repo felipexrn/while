@@ -221,10 +221,10 @@ interface Linguagem {
 	}
 
 	class AtribuicaoParalela implements Comando {
-		private final List<String> ids;
-		private final List<Expressao> expressoes;
+		private final ArrayList<String> ids;
+		private final ArrayList<Expressao> expressoes;
 
-		AtribuicaoParalela(List<String> ids, List<Expressao> expressoes) {
+		AtribuicaoParalela(ArrayList<String> ids, ArrayList<Expressao> expressoes) {
 			this.ids = ids;
 			this.expressoes = expressoes;
 		}
@@ -234,13 +234,15 @@ interface Linguagem {
 			if ((ids.size()) != (expressoes.size()))
 				throw new SyntaxException("Número de identificadores difere da quantidade de expressões.");
 
-			List<String> idsOrdenados = new ArrayList<String>(ids);
+			ArrayList<String> idsOrdenados = new ArrayList<String>(ids);
 			Collections.sort(idsOrdenados);
+
 			for (int i=1; i < idsOrdenados.size(); i++) {
 				if (idsOrdenados.get(i-1).equals(idsOrdenados.get(i)))
 					throw new SyntaxException("Identificador já existe no contexto.");
 			}
-			for (int i=1; i < ids.size(); i++) {
+
+			for (int i=0; i < ids.size(); i++) {
 				ambiente.put(ids.get(i), expressoes.get(i).getValor());
 			}
 		}

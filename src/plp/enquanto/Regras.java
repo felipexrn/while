@@ -134,9 +134,18 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitAtribuicaoParalela(AtribuicaoParalelaContext ctx) {
-		final List<String> ids = ctx.ID().getText();
-		final List<Expressao> expressoes = valores.pegue(ctx.expressao());
-		valores.insira(ctx, new Atribuicao(ids, expressoes));
+		final ArrayList<String> ids = new ArrayList<String>();
+		final ArrayList<Expressao> expressoes = new ArrayList<Expressao>();
+
+		for (int i = 0; i < ctx.ID().size(); i++) {
+			ids.add(ctx.ID(i).getText());
+		}
+
+		for (int i = 0; i < ctx.expressao().size(); i++) {
+			expressoes.add(valores.pegue(ctx.expressao(i)));
+		}
+
+		valores.insira(ctx, new AtribuicaoParalela(ids, expressoes));
 	}
 
 	@Override

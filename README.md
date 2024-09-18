@@ -1,6 +1,8 @@
 While
 =====
 
+Basta
+
 Linguagem "Enquanto" usada como exemplo na disciplina de Paradigmas de Linguagens de Programação
 
 > Implementação da linguagem em Scala (~250 linhas de código): [whilelang](http://github.com/lrlucena/whilelang)
@@ -44,7 +46,7 @@ O script gera o parser e compila o código Java gerado.
 Para executar use `while.bat` (windows) ou `./while` (linux).
 
 ````bash
-$ ./while olamundo.while
+$ ./while teste.while
 ````
 
 ## Projeto de Paradigmas de Linguagens de Programação
